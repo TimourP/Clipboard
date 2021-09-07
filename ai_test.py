@@ -28,7 +28,7 @@ colors = ['xkcd:pale orange', 'xkcd:sea blue', 'xkcd:pale red', 'xkcd:sage green
 bbox_props = dict(boxstyle="round,pad=0.3", fc=colors[0], alpha=.5)
 
 TEXT = ''
-f = open("python_feed_en.txt", "r")
+f = open("python_feed_fr.txt", "r")
 TEXT = TEXT+ f.read()
 f.close()
 vocab = sorted(set(TEXT))
@@ -103,7 +103,7 @@ checkpoint_callback = tf.keras.callbacks.ModelCheckpoint(
     save_weights_only=True)
 EPOCHS = 30
 history = model.fit(dataset, epochs=EPOCHS, callbacks=[checkpoint_callback])
-#model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
+model = build_model(vocab_size, embedding_dim, rnn_units, batch_size=1)
 
 model.load_weights(tf.train.latest_checkpoint(checkpoint_dir))
 
